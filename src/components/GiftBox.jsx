@@ -27,7 +27,7 @@ export default function GiftBox() {
             <div className="ribbon-horizontal" />
           </div>
 
-          <span className="tap-text">Tap to open 🎁</span>
+          <span className="tap-text">Tap to open your gift🎁</span>
         </motion.div>
       ) : (
         <motion.div
@@ -42,7 +42,7 @@ export default function GiftBox() {
           </div>
 
           <p className="gift-message">
-            This surprise was made with love 💖
+            This surprise was made with love for you 💖
           </p>
         </motion.div>
       )}
