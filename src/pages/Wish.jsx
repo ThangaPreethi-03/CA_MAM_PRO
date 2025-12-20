@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-//import Gift from "../components/GiftBox";
+import Gift from "../components/GiftBox";
 import FireworkIcon from "../components/FireworkIcon";
 import Countdown from "../components/Countdown";
-import Gift from "../components/GiftBox_TEST";
 
 export default function Wish() {
   const name = localStorage.getItem("name");
