@@ -1,0 +1,361 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins",
+             "Segoe UI Emoji",
+             "Apple Color Emoji",
+             "Noto Color Emoji",
+             system-ui,
+             sans-serif;
+
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, #1a1b4b, #0b0c2a);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Floating gradient blobs */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  z-index: -1;
+  animation: floatBlob 18s infinite alternate ease-in-out;
+}
+
+body::before {
+  background: #ff4fd8;
+  top: -100px;
+  left: -100px;
+}
+
+body::after {
+  background: #00f5ff;
+  bottom: -120px;
+  right: -120px;
+  animation-delay: 6s;
+}
+
+@keyframes floatBlob {
+  from { transform: translateY(0); }
+  to { transform: translateY(80px); }
+}
+
+/* Glass card – colorful */
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.05)
+  );
+  backdrop-filter: blur(22px);
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 16px 42px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0b0c2a;
+  background: linear-gradient(135deg, #ffd93d, #ff4fd8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px #ff4fd8;
+}
+
+/* Headings */
+h1 {
+  font-size: clamp(36px, 7vw, 58px);
+  background: linear-gradient(90deg, #ffd93d, #ff4fd8, #00f5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: clamp(22px, 5vw, 32px);
+}
+
+p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.emoji {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji";
+}
+
+.neonTitle {
+  font-size: clamp(36px, 7vw, 60px);
+  background: linear-gradient(90deg, #ffd93d, #ff4fd8, #00f5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 15px rgba(255, 217, 61, 0.6),
+    0 0 30px rgba(255, 79, 216, 0.5);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+/* Gift box */
+.box {
+  width: 120px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff4fd8, #ffd93d);
+  border-radius: 12px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Lid */
+.lid {
+  width: 130px;
+  height: 35px;
+  background: linear-gradient(135deg, #00f5ff, #8b5cf6);
+  border-radius: 14px;
+  position: absolute;
+  top: 0;
+  left: -5px;
+  transform-origin: bottom center;
+  transition: transform 0.6s ease;
+}
+
+/* Lid opening */
+.lid-open {
+  transform: rotateX(70deg) translateY(-10px);
+}
+
+/* Particles */
+.gift-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: giftBurst 1.6s ease-out forwards;
+}
+
+.count {
+  font-size: 100px;
+  font-weight: 800;
+  animation: zoomFade 1s ease-in-out;
+}
+
+@keyframes zoomFade {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+@keyframes giftBurst {
+  to {
+    transform: translate(var(--x), var(--y)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+
+@keyframes pulseGlow {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.25); }
+}
+
+/* Countdown screen */
+.countdown {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #1a1b4b, #0b0c2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.countText {
+  font-size: clamp(80px, 20vw, 140px);
+  font-weight: 800;
+  animation: zoomPulse 1s ease-in-out;
+}
+/* Glow intensity */
+.glow-3 {
+  text-shadow: 0 0 10px rgba(255,217,61,0.4);
+}
+
+.glow-2 {
+  text-shadow:
+    0 0 20px rgba(255,79,216,0.6),
+    0 0 40px rgba(255,79,216,0.4);
+}
+
+.glow-1 {
+  text-shadow:
+    0 0 30px rgba(0,245,255,0.8),
+    0 0 60px rgba(0,245,255,0.6);
+}
+
+/* Shake on 1 */
+.shake {
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+
+@keyframes zoomPulse {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* Gift wrapper */
+.giftWrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* Gift box base */
+.giftBox {
+  position: absolute;
+  bottom: 0;
+  width: 140px;
+  height: 90px;
+  background: linear-gradient(135deg, #ff4fd8, #ffd93d);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* Gift lid */
+.giftLid {
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 152px;
+  height: 42px;
+  background: linear-gradient(135deg, #00f5ff, #8b5cf6);
+  border-radius: 18px;
+  transform-origin: bottom center;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Lid open animation */
+.lidOpen {
+  transform: rotateX(75deg) translateY(-14px);
+}
+
+/* Particles */
+.giftParticle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffd93d);
+  animation: particleBurst 1.4s ease-out forwards;
+  animation-delay: var(--d);
+}
+
+@keyframes particleBurst {
+  to {
+    transform: translate(var(--x), var(--y)) scale(0.3);
+    opacity: 0;
+  }
+}
+/* Gift emoji base */
+.giftEmoji {
+  font-size: 90px;
+  cursor: pointer;
+  animation: giftFloat 2.5s infinite ease-in-out;
+  transition: transform 0.4s ease;
+  user-select: none;
+}
+
+/* On click */
+.giftOpen {
+  transform: scale(1.2) rotate(12deg);
+  animation: giftPop 0.9s ease forwards;
+}
+
+/* Floating idle animation */
+@keyframes giftFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+  100% { transform: translateY(0); }
+}
+
+/* Pop animation before navigation */
+@keyframes giftPop {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.4) rotate(15deg);
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Gift animation */
+@keyframes bounceGlow {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-18px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes firework {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
