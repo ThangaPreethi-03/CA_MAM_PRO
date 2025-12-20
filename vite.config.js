@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/ca-mam-pro-2026/",
+  base: "/ca-mam-pro-cisike/",
 });
