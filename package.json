@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://thangapreethi-03.github.io/CA_MAM_PRO",
+  "homepage": "https://thangapreethi-03.github.io/new-ect",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
