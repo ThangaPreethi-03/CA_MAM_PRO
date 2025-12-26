@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 const text = `
 🎉 Surpriseee! 🎉
 
-You made this year brighter just by being you 💫
-May 2025 bring smiles, success, and endless happiness 🌈
-Let’s make more memories together 🥳
+HAPPY NEW YEAR! 💫
+Wishing you a year filled with joy, adventure and all your heart's desires! 🌈
+May your dreams turn into plans and your goals into achievements 🥳
+Here's to new beginnings, fresh starts and making unforgettable memories! 🎈
 `;
 
 export default function Message() {
@@ -23,7 +24,7 @@ export default function Message() {
 
   return (
     <div className="glass" style={card}>
-      <h2>💖 A Special Message 💖</h2>
+      <h2>💖 A Exclusive Message 💖</h2>
       <p style={{ whiteSpace: "pre-line" }}>{display}</p>
     </div>
   );
