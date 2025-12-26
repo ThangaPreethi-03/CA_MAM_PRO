@@ -8,7 +8,7 @@ export default function Entry() {
   return (
     <div style={wrap}>
       <div className="glass" style={card}>
-        <h1>🎉 Hello Mam!</h1>
+        <h1>🎉 Hello Buddy!</h1>
         <p>Your New Year surprise is waiting ✨</p>
 
         <input
