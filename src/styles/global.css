@@ -572,3 +572,38 @@ p {
   font-size: 15px;
   opacity: 0.9;
 }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+.final-glow {
+  box-shadow: 0 0 40px rgba(255, 200, 255, 0.6);
+  transition: box-shadow 2s ease;
+}
+
+.fade-out {
+  animation: fadeOut 1.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+}
+
+.card.glow {
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.25),
+    0 0 60px rgba(255, 105, 180, 0.35);
+  transition: box-shadow 1.5s ease-in-out;
+}

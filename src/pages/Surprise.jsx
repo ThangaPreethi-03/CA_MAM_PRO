@@ -1,23 +1,35 @@
 import Confetti from "react-confetti";
 import { useEffect, useState } from "react";
-import Message from "../components/MessageCard";
+import MessageCard from "../components/MessageCard";
 import BackgroundMusic from "../components/BackgroundMusic";
-
 
 export default function Surprise() {
   const [confetti, setConfetti] = useState(true);
+  const [heavierConfetti, setHeavierConfetti] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setConfetti(false), 7000);
+    // Stop first burst after 6s
+    const stop1 = setTimeout(() => setConfetti(false), 6000);
+    return () => clearTimeout(stop1);
   }, []);
 
-  return (
-    
-    <div style={wrap}>
-        <BackgroundMusic />
+  // Trigger heavier confetti when last line starts
+  const handleLastPhaseStart = () => {
+    setHeavierConfetti(true);
+    setTimeout(() => setHeavierConfetti(false), 7000); // 7s heavy confetti
+  };
 
-      {confetti && <Confetti gravity={0.18} />}
-      <Message />
+  return (
+    <div style={wrap}>
+      <BackgroundMusic />
+
+      {/* Initial light confetti */}
+      {confetti && <Confetti gravity={0.15} numberOfPieces={200} recycle={false} />}
+
+      {/* Heavier confetti for last line */}
+      {heavierConfetti && <Confetti gravity={0.12} numberOfPieces={400} recycle={false} />}
+
+      <MessageCard onLastPhaseStart={handleLastPhaseStart} />
     </div>
   );
 }
@@ -25,5 +37,7 @@ export default function Surprise() {
 const wrap = {
   minHeight: "100vh",
   padding: "24px",
-  textAlign: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };

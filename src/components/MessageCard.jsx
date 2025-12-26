@@ -1,39 +1,54 @@
 import { useEffect, useState } from "react";
+import useTypewriter from "../hooks/useTypewriter";
 
-const text = `
-Surpriseee! 🎉
+const phases = [
+  "Surpriseee! 🎉\n\nHAPPY NEW YEAR 2026! 💫\n\n",
+  "Wishing you a year filled with joy, adventure and all your heart's desires! 🌈\n\n",
+  "May your dreams turn into plans and your goals into achievements 🥳\n\n",
+  "Here's to new beginnings, fresh starts and making unforgettable memories! 🎈",
+];
 
-HAPPY NEW YEAR! 💫
-Wishing you a year filled with joy, adventure and all your heart's desires! 🌈
-May your dreams turn into plans and your goals into achievements 🥳
-Here's to new beginnings, fresh starts and making unforgettable memories! 🎈
+export default function MessageCard({ onLastPhaseStart }) {
+  const { text, done, replay, currentPhase } = useTypewriter(phases, 29000);
+  const [glow, setGlow] = useState(false);
 
-`;
-
-export default function Message() {
-  const [display, setDisplay] = useState("");
-  let i = 0;
-
+  // Glow card while typing
   useEffect(() => {
-    const timer = setInterval(() => {
-      setDisplay((prev) => prev + text.charAt(i));
-      i++;
-      if (i >= text.length) clearInterval(timer);
-    }, 35);
-    return () => clearInterval(timer);
+    setGlow(true);
   }, []);
 
+  // Trigger callback when last phase starts
+  useEffect(() => {
+    if (currentPhase === phases.length - 1 && onLastPhaseStart) {
+      onLastPhaseStart();
+    }
+  }, [currentPhase, onLastPhaseStart]);
+
   return (
-    <div className="glass" style={card}>
+    <div className={`glass ${glow ? "final-glow" : ""}`} style={card}>
       <h2>💖 A New Year Message 💖</h2>
-      <p style={{ whiteSpace: "pre-line" }}>{display}</p>
+      <p style={{ whiteSpace: "pre-line" }}>{text}</p>
+      {done && (
+        <button onClick={replay} style={btn}>
+          🔁 Replay
+        </button>
+      )}
     </div>
   );
 }
 
 const card = {
-  maxWidth: "560px",
-  margin: "0 auto 50px",
-  padding: "40px",
+  maxWidth: "580px",
+  padding: "42px",
   textAlign: "center",
+  transition: "all 0.5s ease",
+};
+
+const btn = {
+  marginTop: "25px",
+  padding: "10px 20px",
+  borderRadius: "20px",
+  border: "none",
+  cursor: "pointer",
+  fontSize: "16px",
 };
